@@ -1,5 +1,7 @@
 .DS_Store
 
+gerber.zip
+
 ## vscode gitignore
 .pio
 .vscode/.browse.c_cpp.db*
