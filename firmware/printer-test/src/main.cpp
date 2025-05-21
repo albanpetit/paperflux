@@ -12,12 +12,14 @@
   #include "Adafruit_Thermal.h"
   #include "adalogo.h"
   #include "adaqrcode.h"
+  #include <AP33772S.h>
   
   // Here's the new syntax when using SoftwareSerial (e.g. Arduino Uno) ----
   // If using hardware serial instead, comment out or remove these lines:
 
-  HardwareSerial mySerial(1);
-  Adafruit_Thermal printer(&mySerial);     // Pass addr to printer constructor
+  AP33772S usbpd;
+  HardwareSerial printerSerial(1);
+  Adafruit_Thermal printer(&printerSerial);     // Pass addr to printer constructor
   // Then see setup() function regarding serial & printer begin() calls.
   
   // Here's the syntax for hardware serial (e.g. Arduino Due) --------------
@@ -28,91 +30,33 @@
   // -----------------------------------------------------------------------
   
   void setup() {
-  
+
+    // put your setup code here, to run once:
+    Wire.begin();
+
+    Serial.begin(115200);
+    delay(1000); //Ensure everything got enough time to bootup
+    usbpd.begin();
+
     // This line is for compatibility with the Adafruit IotP project pack,
     // which uses pin 7 as a spare grounding point.  You only need this if
     // wired up the same way (w/3-pin header into pins 5/6/7):
     pinMode(7, OUTPUT); digitalWrite(7, LOW);
   
     // NOTE: SOME PRINTERS NEED 9600 BAUD instead of 19200, check test page.
-    mySerial.begin(9600, SERIAL_8N1, 10, 7);
+    printerSerial.begin(9600, SERIAL_8N1, 10, 7);
     //Serial1.begin(19200); // Use this instead if using hardware serial
     printer.begin();        // Init printer (same regardless of serial type)
-  
-    // The following calls are in setup(), but don't *need* to be.  Use them
-    // anywhere!  They're just here so they run one time and are not printed
-    // over and over (which would happen if they were in loop() instead).
-    // Some functions will feed a line when called, this is normal.
-  
-    // Font options
-    printer.setFont('B');
-    printer.println("FontB");
-    printer.println("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-    printer.setFont('A');
-    printer.println("FontA (default)");
-    printer.println("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-  
-    // Test inverse on & off
-    printer.inverseOn();
-    printer.println(F("Inverse ON"));
-    printer.inverseOff();
-  
-    // Test character double-height on & off
-    printer.doubleHeightOn();
-    printer.println(F("Double Height ON"));
-    printer.doubleHeightOff();
-  
-    // Set text justification (right, center, left) -- accepts 'L', 'C', 'R'
-    printer.justify('R');
-    printer.println(F("Right justified"));
-    printer.justify('C');
-    printer.println(F("Center justified"));
-    printer.justify('L');
-    printer.println(F("Left justified"));
-  
-    // Test more styles
-    printer.boldOn();
-    printer.println(F("Bold text"));
-    printer.boldOff();
-  
-    printer.underlineOn();
-    printer.println(F("Underlined text"));
-    printer.underlineOff();
-  
-    printer.setSize('L');        // Set type size, accepts 'S', 'M', 'L'
-    printer.println(F("Large"));
-    printer.setSize('M');
-    printer.println(F("Medium"));
-    printer.setSize('S');
-    printer.println(F("Small"));
-  
-    printer.justify('C');
-    printer.println(F("normal\nline\nspacing"));
-    printer.setLineHeight(50);
-    printer.println(F("Taller\nline\nspacing"));
-    printer.setLineHeight(); // Reset to default
-    printer.justify('L');
-  
-    // Barcode examples:
-    // CODE39 is the most common alphanumeric barcode:
-    printer.printBarcode("ADAFRUT", CODE39);
-    printer.setBarcodeHeight(100);
-    // Print UPC line on product barcodes:
-    printer.printBarcode("123456789123", UPC_A);
-  
-    // Print the 75x75 pixel logo in adalogo.h:
-    printer.printBitmap(adalogo_width, adalogo_height, adalogo_data);
-  
-    // Print the 135x135 pixel QR code in adaqrcode.h:
-    printer.printBitmap(adaqrcode_width, adaqrcode_height, adaqrcode_data);
-    printer.println(F("Adafruit!"));
-    printer.feed(2);
-  
-    printer.sleep();      // Tell printer to sleep
-    delay(3000L);         // Sleep for 3 seconds
-    printer.wake();       // MUST wake() before printing again, even if reset
-    printer.setDefault(); // Restore printer to defaults
   }
   
   void loop() {
+    usbpd.setOutput(1);
+    if(usbpd.getAVSIndex() > 0)
+    {
+      for(int i = 15000; i <= 30000; i=i+1000)
+        {
+          usbpd.setAVSPDO(usbpd.getAVSIndex(), i, 3000);
+          delay(600);
+        }
+    }
   }
