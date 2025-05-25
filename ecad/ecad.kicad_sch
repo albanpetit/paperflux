@@ -9333,7 +9333,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "1u"
 			(at 215.646 58.674 90)
 			(effects
 				(font
@@ -13262,7 +13262,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7k"
+		(property "Value" "10k"
 			(at 221.234 50.546 0)
 			(effects
 				(font

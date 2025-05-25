@@ -124,7 +124,7 @@
 		(tenting front back)
 		(grid_origin 13.8 196.675)
 		(pcbplotparams
-			(layerselection 0x00000000_00000000_55555555_5755f5ff)
+			(layerselection 0x00000000_00000000_55555555_57555501)
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
 			(disableapertmacros no)
 			(usegerberextensions no)
@@ -156,11 +156,11 @@
 			(sketchdnponfab yes)
 			(crossoutdnponfab yes)
 			(subtractmaskfromsilk no)
-			(outputformat 1)
+			(outputformat 4)
 			(mirror no)
 			(drillshape 0)
 			(scaleselection 1)
-			(outputdirectory "gerber/")
+			(outputdirectory "/Users/albanpetit/Desktop/reddit post/pdf/")
 		)
 	)
 	(net 0 "")
@@ -3994,17 +3994,6 @@
 			(layer "F.Fab")
 			(uuid "c77684ba-a84a-4638-a48d-fac9699b79a0")
 		)
-		(fp_text user "${REFERENCE}"
-			(at 4 1.5 90)
-			(layer "F.Fab")
-			(uuid "b51bdcdc-2287-4c85-8542-2cbda47301d0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(pad "1" thru_hole roundrect
 			(at 0 0 270)
 			(size 1.2 1.75)
@@ -5654,6 +5643,7 @@
 			(effects
 				(font
 					(size 0.001 0.001)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -5665,6 +5655,7 @@
 			(effects
 				(font
 					(size 0.001 0.001)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -12030,6 +12021,7 @@
 			(effects
 				(font
 					(size 0.001 0.001)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -12041,6 +12033,7 @@
 			(effects
 				(font
 					(size 0.001 0.001)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -12825,117 +12818,6 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "f8b9c814-cf7a-4672-9a26-66c234717c12")
-	)
-	(dimension
-		(type orthogonal)
-		(layer "Cmts.User")
-		(uuid "21fe35b0-70a9-4704-bef0-50d5c8bde1e5")
-		(pts
-			(xy 43.8 146.675) (xy 43.8 150.175)
-		)
-		(height 7.6)
-		(orientation 1)
-		(format
-			(prefix "")
-			(suffix "")
-			(units 3)
-			(units_format 1)
-			(precision 1)
-		)
-		(style
-			(thickness 0.1)
-			(arrow_length 1.27)
-			(text_position_mode 2)
-			(arrow_direction outward)
-			(extension_height 0.58642)
-			(extension_offset 0.5)
-			(keep_text_aligned yes)
-		)
-		(gr_text "3.5 mm"
-			(at 52.8 148.425 90)
-			(layer "Cmts.User")
-			(uuid "21fe35b0-70a9-4704-bef0-50d5c8bde1e5")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-	)
-	(dimension
-		(type orthogonal)
-		(layer "Cmts.User")
-		(uuid "34031195-a93f-4dad-91c4-1f1cd7d4914a")
-		(pts
-			(xy 43.8 146.675) (xy 43.8 196.675)
-		)
-		(height 6)
-		(orientation 1)
-		(format
-			(prefix "")
-			(suffix "")
-			(units 3)
-			(units_format 1)
-			(precision 4)
-		)
-		(style
-			(thickness 0.1)
-			(arrow_length 1.27)
-			(text_position_mode 2)
-			(arrow_direction outward)
-			(extension_height 0.58642)
-			(extension_offset 0.5)
-			(keep_text_aligned yes)
-		)
-		(gr_text "50.0000 mm"
-			(at 51 171.675 90)
-			(layer "Cmts.User")
-			(uuid "34031195-a93f-4dad-91c4-1f1cd7d4914a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-	)
-	(dimension
-		(type orthogonal)
-		(layer "Cmts.User")
-		(uuid "c449ddaa-a502-48a8-9df4-3e1918c047d2")
-		(pts
-			(xy 13.8 150.475) (xy 47.3 150.475)
-		)
-		(height -5.8)
-		(orientation 0)
-		(format
-			(prefix "")
-			(suffix "")
-			(units 3)
-			(units_format 1)
-			(precision 4)
-		)
-		(style
-			(thickness 0.1)
-			(arrow_length 1.27)
-			(text_position_mode 0)
-			(arrow_direction outward)
-			(extension_height 0.58642)
-			(extension_offset 0.5)
-			(keep_text_aligned yes)
-		)
-		(gr_text "33.5000 mm"
-			(at 30.55 143.525 0)
-			(layer "Cmts.User")
-			(uuid "c449ddaa-a502-48a8-9df4-3e1918c047d2")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 	)
 	(segment
 		(start 33.55 158.775)
